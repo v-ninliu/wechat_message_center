@@ -34,7 +34,7 @@ This will start the server
 
 ## Making Tests
 
-### Add a new record
+### Create a record
 POST:
 http://localhost:8080/message
 
