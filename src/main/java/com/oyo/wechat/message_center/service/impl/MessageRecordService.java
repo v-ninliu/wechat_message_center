@@ -1,0 +1,74 @@
+package com.oyo.wechat.message_center.service.impl;
+
+import com.oyo.wechat.message_center.models.MessageRecord;
+import com.oyo.wechat.message_center.repositories.MessageRecordRepository;
+import com.oyo.wechat.message_center.service.IMessageRecordService;
+import java.util.List;
+import org.bson.types.ObjectId;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+
+@Service("MessageRecordService")
+public class MessageRecordService implements IMessageRecordService {
+
+  @Autowired
+  private MessageRecordRepository repository;
+
+  @Override
+  public MessageRecord createMessageRecord(String requestBody,
+      HttpServletRequest request) {
+
+    JSONObject jsonRequest = null;
+    MessageRecord messageRecord = new MessageRecord();
+    try {
+      jsonRequest = new JSONObject(requestBody);
+
+      messageRecord.set_id(ObjectId.get());
+      messageRecord.setCreatedDate(new Date());
+      messageRecord.setName(jsonRequest.getString("name"));
+      messageRecord.setCategory(jsonRequest.getString("category"));
+      messageRecord.setType(jsonRequest.getString("type"));
+      messageRecord.setKeywords(jsonRequest.getString("keywords"));
+      messageRecord.setPlaceholders(jsonRequest.getString("placeholders"));
+
+      String message = jsonRequest.getString("message");
+      message.replace("\"", "\\\"");
+
+      messageRecord.setMessage(message);
+      repository.save(messageRecord);
+
+
+    } catch (Exception e) {
+      // TODO: add error message
+    }
+
+    return messageRecord;
+  }
+
+  @Override
+  public void deleteMessageRecord(ObjectId id) {
+    repository.delete(repository.findBy_id(id));
+  }
+
+  @Override
+  public MessageRecord modifyMessageRecordsById(ObjectId id, MessageRecord record) {
+    record.set_id(id);
+    repository.save(record);
+    return record;
+  }
+
+  @Override
+  public MessageRecord getMessageRecordById(ObjectId id) {
+    return repository.findBy_id(id);
+  }
+
+  @Override
+  public List<MessageRecord> getAllMessageRecords() {
+    return repository.findAll();
+  }
+
+}

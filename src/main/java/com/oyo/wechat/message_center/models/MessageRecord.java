@@ -14,20 +14,22 @@ public class MessageRecord {
   public String category;
   public String type;
   public String keywords;
+  public String placeholders;
   public String message;
 
   // Constructors
   public MessageRecord() {
   }
 
-  public MessageRecord(ObjectId _id, String name, Date createdDate, String category, String type, String keywords,
-      String message) {
+  public MessageRecord(ObjectId _id, String name, Date createdDate, String category, String type,
+      String keywords, String placeholders, String message) {
     this._id = _id;
     this.createdDate = createdDate;
     this.name = name;
     this.category = category;
     this.type = type;
     this.keywords = keywords;
+    this.placeholders = placeholders;
     this.message = message;
 
   }
@@ -79,6 +81,14 @@ public class MessageRecord {
 
   public void setKeywords(String keywords) {
     this.keywords = keywords;
+  }
+
+  public String getPlaceholders() {
+    return placeholders;
+  }
+
+  public void setPlaceholders(String placeholders) {
+    this.placeholders = placeholders;
   }
 
   public String getMessage() {
