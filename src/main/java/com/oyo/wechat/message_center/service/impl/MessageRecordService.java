@@ -7,6 +7,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +30,16 @@ public class MessageRecordService implements IMessageRecordService {
 
       messageRecord.set_id(ObjectId.get());
       messageRecord.setCreatedDate(new Date());
-      messageRecord.setName(jsonRequest.getString("name"));
-      messageRecord.setCategory(jsonRequest.getString("category"));
-      messageRecord.setType(jsonRequest.getString("type"));
+
+      String category = jsonRequest.getString("category");
+      String type = jsonRequest.getString("type");
+      String name = jsonRequest.getString("name");
+
+      String fullName = name + "-" + type + "-" + category;
+
+      messageRecord.setName(fullName);
+      messageRecord.setCategory(category);
+      messageRecord.setType(type);
       messageRecord.setKeywords(jsonRequest.getString("keywords"));
       messageRecord.setPlaceholders(jsonRequest.getString("placeholders"));
 
@@ -64,6 +72,11 @@ public class MessageRecordService implements IMessageRecordService {
   @Override
   public MessageRecord getMessageRecordById(ObjectId id) {
     return repository.findBy_id(id);
+  }
+
+  @Override
+  public MessageRecord getMessageRecordByName(String name) {
+    return repository.findByName(name);
   }
 
   @Override

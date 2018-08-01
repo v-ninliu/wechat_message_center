@@ -16,6 +16,8 @@ public interface IMessageRecordService {
 
   MessageRecord getMessageRecordById(ObjectId id);
 
+  MessageRecord getMessageRecordByName(String name);
+
   List<MessageRecord> getAllMessageRecords();
 
 }
