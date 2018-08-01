@@ -79,7 +79,9 @@ http://localhost:8080/message/5b6039a2e29edf2a0c22171e
 
 ### Find a record by name
 GET
-http://localhost:8080/message/name/<full name>
+http://localhost:8080/message/name/full-name
+
+Where: full-name = name-type-category
 
 ### Modify a record by id
 PUT
