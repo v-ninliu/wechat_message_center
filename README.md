@@ -10,7 +10,7 @@ An Application (Hotel Booking Web application for example) can retrieve these me
 
 In saved message record, we use keywords, placeholders to reserve places for the run-time values.
 
-##[translation]
+## [translation]
 
 这是一个Web service，它提供APIs来管理MongoDB中保存的微信消息。
 
