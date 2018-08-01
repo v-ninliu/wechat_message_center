@@ -32,8 +32,9 @@ MessageCenterApplication
 This will start the server
 
 
-### Making Tests
+## Making Tests
 
+### Add s new record
 POST:
 http://localhost:8080/message
 
@@ -47,6 +48,10 @@ Body:
 	"placeholders":"#header2#:HEADER_2,#hotelName#:HOTEL_NAME,#roomName#:ROOM_NAME",
 "message": { "toUser": "o7peR0ijJGmmDW719M89uRZfFhTg", "officialAccount": "OYORooms", "url":"oyorooms.com", "templateId":"1WuhB-snbuN-gGpxdQ3LvsxTaViA4UCURct4RIswfig", "data":[ { "name":"first", "value":"恭喜你预定成功", "color":"#FF0000" }, { "name":"hotelName", "value":"OYO1008酒店", "color":"#173177" }, { "name":"roomName", "value":"标准大床", "color":"#173177" }, { "name":"pay", "value":"199元", "color":"#173177" }, { "name":"date", "value":"2018年6月17日", "color":"#173177" }, { "name":"remark", "value":"\n订单号：hh52284f962100224544\n如有疑问，请咨询13912345678", "color":"#173177" } ]}
 }
+
+### Show all records
+GET
+http://localhost:8080/message
 
 
 
