@@ -46,6 +46,14 @@ public class MessageRecordController {
   }
 
   /**
+   * getRecordByName
+   */
+  @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+  public MessageRecord getRecordByName(@PathVariable("name") String name) {
+    return messageRecordService.getMessageRecordByName(name);
+  }
+
+  /**
    * modifyRecordsById
    */
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
