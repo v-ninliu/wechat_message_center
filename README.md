@@ -34,7 +34,7 @@ This will start the server
 
 ## Making Tests
 
-### Add s new record
+### Add a new record
 POST:
 http://localhost:8080/message
 
@@ -53,5 +53,17 @@ Body:
 GET
 http://localhost:8080/message
 
+### Find a record by id
+GET
+http://localhost:8080/message/5b6039a2e29edf2a0c22171e
 
+### Modify a record by id
+PUT
+http://localhost:8080/message/5b6039a2e29edf2a0c22171e
+
+Body: [same as for create record]
+
+### Delete a record by id
+DELETE
+http://localhost:8080/message/5b6039a2e29edf2a0c22171e
 
