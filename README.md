@@ -2,6 +2,12 @@
 
 This is a Web Service which provides APIs to manage WeChat messages saved in MongoDB.
 
+Messages could be hotel promotional message, booking confirmation message, payment success message, ect,...
+
+An Application (Hotel Booking Web application for example) can retrieve these message at run-time, set values (such as hotel name, price...), and send message to the user.
+
+In saved message record, we use keywords, placeholders to reserve places for the run-time values.
+
 ## Project setup
 Clone the project
 
