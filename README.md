@@ -10,6 +10,17 @@ An Application (Hotel Booking Web application for example) can retrieve these me
 
 In saved message record, we use keywords, placeholders to reserve places for the run-time values.
 
+[translation]
+这是一个Web service，它提供APIs来管理MongoDB中保存的微信消息。
+
+为了在运行时向用户发送正确的消息，我们需要提前准备，预览和保存消息。
+
+消息可以是酒店促销信息，预订确认消息，付款成功消息等，...
+
+应用程序（例如酒店预订官网应用程序）可以在运行时取出这些消息，赋予值（例如酒店名称，价格...），并向用户发送消息。
+
+在保存的消息记录中，我们使用关键字，占位符来保留运行时值的位置。
+
 ## Project setup
 Clone the project
 
