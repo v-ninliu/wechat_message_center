@@ -77,6 +77,10 @@ http://localhost:8080/message
 GET
 http://localhost:8080/message/5b6039a2e29edf2a0c22171e
 
+### Find a record by name
+GET
+http://localhost:8080/message/name/<full name>
+
 ### Modify a record by id
 PUT
 http://localhost:8080/message/5b6039a2e29edf2a0c22171e
