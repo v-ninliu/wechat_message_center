@@ -56,7 +56,7 @@ This will start the server
 
 ### Create a record
 POST:
-http://localhost:8080/message
+http://localhost:8080/message/record
 
 Body:
 
@@ -108,22 +108,9 @@ Body:
 }
 ```
 
-```json
-{
-	"count": 2, // 这次获取的粉丝数量   
-	"data": { // 粉丝列表
-		"openid": [
-			"ocYxcuAEy30bX0NXmGn4ypqx3tI0",
-			"ocYxcuBt0mRugKZ7tGAHPnUaOW7Y"
-		]
-	},
-	"next_openid": "ocYxcuBt0mRugKZ7tGAHPnUaOW7Y" // 拉取列表最后一个用户的openid 
-}
-```
-
 ### Show all records
 GET
-http://localhost:8080/message
+http://localhost:8080/message/record
 
 ### Find a record by id
 GET
@@ -131,17 +118,17 @@ http://localhost:8080/message/5b6039a2e29edf2a0c22171e
 
 ### Find a record by name
 GET
-http://localhost:8080/message/name/full-name
+http://localhost:8080/message/name/full-name/record
 
 Where: full-name = name-type-category
 
 ### Modify a record by id
 PUT
-http://localhost:8080/message/5b6039a2e29edf2a0c22171e
+http://localhost:8080/message/5b6039a2e29edf2a0c22171e/record
 
 Body: [same as for create record]
 
 ### Delete a record by id
 DELETE
-http://localhost:8080/message/5b6039a2e29edf2a0c22171e
+http://localhost:8080/message/5b6039a2e29edf2a0c22171e/record
 
