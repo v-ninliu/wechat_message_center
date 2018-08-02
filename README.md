@@ -146,3 +146,8 @@ Body:
    "parameters":"HEADER_1===感谢您预订我们的酒店&&&HOTEL_NAME===OYO Hotel888L&&&ROOM_NAME===small room&&&HOTEL_PRICE===236&&&BOOKING_ID===5578999&&&CUSTOMER_SERVICE_PHONE===13717636255"
 }
 ```
+
+#### Where:
+"name": name of the message record
+"toUser": user's openid 
+"parameters": list of key-value pairs. use "===" beteween key and value; use "&&&" to separate each pair.
