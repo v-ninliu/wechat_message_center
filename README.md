@@ -62,7 +62,6 @@ Body:
 
 ```json
 {
- {  
    "name":"test2",
    "category":"OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
    "type":"HOTEL_BOOKING_SUCCESS",
@@ -106,7 +105,6 @@ Body:
          }
       ]
    }
-}
 }
 ```
 
