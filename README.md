@@ -149,5 +149,7 @@ Body:
 
 #### Where:
 "name": name of the message record
+
 "toUser": user's openid 
+
 "parameters": list of key-value pairs. use "===" beteween key and value; use "&&&" to separate each pair.
