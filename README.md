@@ -132,3 +132,17 @@ Body: [same as for create record]
 DELETE
 http://localhost:8080/message/5b6039a2e29edf2a0c22171e/record
 
+## Compose a message with run time value
+
+POST
+http://localhost:8080/message/compose
+
+Body:
+
+```json
+{
+  "name":"test2-HOTEL_BOOKING_SUCCESS-OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
+   "toUser":"o7peR0ijJGmmDW719M89uRZfFhTg",
+   "parameters":"HEADER_1===感谢您预订我们的酒店&&&HOTEL_NAME===LOVE HOTEL&&&ROOM_NAME===small   room&&&HOTEL_PRICE===236&&&BOOKING_ID===5578999&&&CUSTOMER_SERVICE_PHONE===13717636255"
+}
+```
