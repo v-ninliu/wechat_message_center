@@ -1,9 +1,7 @@
 package com.oyo.wechat.message_center.controllers;
 
 import com.oyo.wechat.message_center.models.MessageRecord;
-import com.oyo.wechat.message_center.repositories.MessageRecordRepository;
 import com.oyo.wechat.message_center.service.IMessageRecordService;
-import java.util.Date;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,7 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/message/record")
 public class MessageRecordController {
 
   @Autowired
