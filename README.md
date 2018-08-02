@@ -62,7 +62,7 @@ Body:
 
 ```json
 {
-   "name":"test2",
+   "name":"default-HOTEL_BOOKING_SUCCESS-OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
    "category":"OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
    "type":"HOTEL_BOOKING_SUCCESS",
    "keywords":"first===HEADER_1&&&hotelName===HOTEL_NAME&&&roomName===ROOM_NAME&&&pay===HOTEL_PRICE",
@@ -108,6 +108,8 @@ Body:
 }
 ```
 
+where: name must be unique.
+
 ### Show all records
 GET
 http://localhost:8080/message/record
@@ -118,9 +120,7 @@ http://localhost:8080/message/5b6039a2e29edf2a0c22171e
 
 ### Find a record by name
 GET
-http://localhost:8080/message/name/full-name/record
-
-Where: full-name = name-type-category
+http://localhost:8080/message/record/name/default-HOTEL_BOOKING_SUCCESS-OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE
 
 ### Modify a record by id
 PUT
@@ -141,7 +141,7 @@ Body:
 
 ```json
 {
-  "name":"test2-HOTEL_BOOKING_SUCCESS-OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
+  "name":"default-HOTEL_BOOKING_SUCCESS-OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
    "toUser":"o7peR0ijJGmmDW719M89uRZfFhTg",
    "parameters":"HEADER_1===感谢您预订我们的酒店&&&HOTEL_NAME===OYO Hotel888L&&&ROOM_NAME===small room&&&HOTEL_PRICE===236&&&BOOKING_ID===5578999&&&CUSTOMER_SERVICE_PHONE===13717636255"
 }
