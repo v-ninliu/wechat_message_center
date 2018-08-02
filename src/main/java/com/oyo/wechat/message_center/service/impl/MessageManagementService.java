@@ -39,7 +39,7 @@ public class MessageManagementService implements IMessageManagementService {
 
       messageRecord = messageRecordService.getMessageRecordByName(name);
       String message = messageRecord.getMessage();
-      //message = message.replace("\\", "");
+
       jsonMessage = new JSONObject(message);
       jsonMessage.put("toUser", toUser);
 
@@ -57,6 +57,12 @@ public class MessageManagementService implements IMessageManagementService {
           composeMessage = jsonMessage.toString();
         }
 
+        // second handle placeholders
+        String placeholders = messageRecord.getPlaceholders();
+        if (placeholders != null) {
+          composeMessage = handlePlaceholders(composeMessage, placeholders, parametersMap);
+        }
+
       }
 
     } catch (Exception e) {
@@ -64,6 +70,35 @@ public class MessageManagementService implements IMessageManagementService {
     }
 
     return composeMessage;
+  }
+
+  private String handlePlaceholders(String message, String placeholders,
+      Map<String, String> parametersMap) {
+
+    String outMessage = message;
+    try {
+      Map<String, String> placeholdersMap = createKeyValueMapFromString(placeholders,
+          GlobalConstants.KEY_VALUE_SEPARATOR,
+          GlobalConstants.ITEM_SEPARATOR);
+
+      for (Map.Entry<String, String> entry : placeholdersMap.entrySet()) {
+        String key = entry.getKey();
+        String value = entry.getValue();
+        String realValue = GlobalConstants.EMPTY_STRING;
+        for (Map.Entry<String, String> entryParam : parametersMap.entrySet()) {
+          String keyParam = entryParam.getKey();
+          if (value.equalsIgnoreCase(keyParam)) {
+            realValue = entryParam.getValue();
+            break;
+          }
+        }
+        outMessage = outMessage.replace(key, realValue);
+      }
+    } catch (Exception e) {
+      // TODO: add error message log
+    }
+
+    return outMessage;
   }
 
   private void handleKeywords(JSONObject jsonMessage, String keywords,
