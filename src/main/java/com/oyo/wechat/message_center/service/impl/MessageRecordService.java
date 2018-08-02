@@ -1,5 +1,6 @@
 package com.oyo.wechat.message_center.service.impl;
 
+import com.oyo.wechat.message_center.exception.MessageRecordHandleException;
 import com.oyo.wechat.message_center.models.MessageRecord;
 import com.oyo.wechat.message_center.repositories.MessageRecordRepository;
 import com.oyo.wechat.message_center.service.IMessageRecordService;
@@ -7,7 +8,6 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,9 +35,11 @@ public class MessageRecordService implements IMessageRecordService {
       String type = jsonRequest.getString("type");
       String name = jsonRequest.getString("name");
 
-      String fullName = name + "-" + type + "-" + category;
+      if( repository.findByName(name) != null ) {
+        throw (new MessageRecordHandleException("The record with name = " + name + " exists already. name must be unique"));
+      }
 
-      messageRecord.setName(fullName);
+      messageRecord.setName(name);
       messageRecord.setCategory(category);
       messageRecord.setType(type);
       messageRecord.setKeywords(jsonRequest.getString("keywords"));
@@ -49,9 +51,10 @@ public class MessageRecordService implements IMessageRecordService {
       messageRecord.setMessage(message);
       repository.save(messageRecord);
 
-
+    } catch (MessageRecordHandleException e) {
+      throw(e);
     } catch (Exception e) {
-      // TODO: add error message
+      return null;
     }
 
     return messageRecord;
