@@ -2,6 +2,7 @@ package com.oyo.wechat.message_center.service.impl;
 
 import com.oyo.wechat.message_center.constants.GlobalConstants;
 import com.oyo.wechat.message_center.models.MessageRecord;
+import com.oyo.wechat.message_center.utils.StringUtils;
 
 import com.oyo.wechat.message_center.service.IMessageManagementService;
 import com.oyo.wechat.message_center.service.IMessageRecordService;
@@ -46,7 +47,7 @@ public class MessageManagementService implements IMessageManagementService {
       composeMessage = jsonMessage.toString();
 
       if (parameters != null) {
-        Map<String, String> parametersMap = createKeyValueMapFromString(parameters,
+        Map<String, String> parametersMap = StringUtils.createKeyValueMapFromString(parameters,
             GlobalConstants.KEY_VALUE_SEPARATOR,
             GlobalConstants.ITEM_SEPARATOR);
 
@@ -77,7 +78,7 @@ public class MessageManagementService implements IMessageManagementService {
 
     String outMessage = message;
     try {
-      Map<String, String> placeholdersMap = createKeyValueMapFromString(placeholders,
+      Map<String, String> placeholdersMap = StringUtils.createKeyValueMapFromString(placeholders,
           GlobalConstants.KEY_VALUE_SEPARATOR,
           GlobalConstants.ITEM_SEPARATOR);
 
@@ -105,7 +106,7 @@ public class MessageManagementService implements IMessageManagementService {
       Map<String, String> parametersMap) {
 
     try {
-      Map<String, String> keywordsMap = createKeyValueMapFromString(keywords,
+      Map<String, String> keywordsMap = StringUtils.createKeyValueMapFromString(keywords,
           GlobalConstants.KEY_VALUE_SEPARATOR,
           GlobalConstants.ITEM_SEPARATOR);
 
@@ -143,18 +144,5 @@ public class MessageManagementService implements IMessageManagementService {
     } catch (Exception e) {
       // TODO: add error message log
     }
-  }
-
-  private Map<String, String> createKeyValueMapFromString(String input, String keyValueSeparator,
-      String itemSeparator) {
-
-    Map<String, String> map = new HashMap<String, String>();
-
-    for (String keyValue : input.split(itemSeparator)) {
-      String[] pairs = keyValue.split(keyValueSeparator, 2);
-      map.put(pairs[0], pairs.length == 1 ? "" : pairs[1]);
-    }
-
-    return map;
   }
 }
