@@ -62,12 +62,51 @@ Body:
 
 ```json
 {
-	"name" : "test2",
-	"category": "OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
-    "type": "HOTEL_BOOKING_SUCCESS",
-	"keywords":"first===HEADER_1&&&hotelName===HOTEL_NAME&&&roomName===ROOM_NAME&&&pay===HOTEL_PRICE",
-	"placeholders":"#BookingId#===BOOKING_ID&&&#Phone#===CUSTOMER_SERVICE_PHONE",
-"message": { "toUser": "o7peR0ijJGmmDW719M89uRZfFhTg", "officialAccount": "OYORooms", "url":"oyorooms.com", "templateId":"1WuhB-snbuN-gGpxdQ3LvsxTaViA4UCURct4RIswfig", "data":[ { "name":"first", "value":"恭喜你预定成功", "color":"#FF0000" }, { "name":"hotelName", "value":"OYO1008酒店", "color":"#173177" }, { "name":"roomName", "value":"标准大床", "color":"#173177" }, { "name":"pay", "value":"199元", "color":"#173177" }, { "name":"date", "value":"2018年6月17日", "color":"#173177" }, { "name":"remark", "value":"\n订单号：#BookingId#\n如有疑问，请咨询#Phone#", "color":"#173177" } ]}
+ {  
+   "name":"test2",
+   "category":"OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE",
+   "type":"HOTEL_BOOKING_SUCCESS",
+   "keywords":"first===HEADER_1&&&hotelName===HOTEL_NAME&&&roomName===ROOM_NAME&&&pay===HOTEL_PRICE",
+   "placeholders":"#BookingId#===BOOKING_ID&&&#Phone#===CUSTOMER_SERVICE_PHONE",
+   "message":{  
+      "toUser":"o7peR0ijJGmmDW719M89uRZfFhTg",
+      "officialAccount":"OYORooms",
+      "url":"oyorooms.com",
+      "templateId":"1WuhB-snbuN-gGpxdQ3LvsxTaViA4UCURct4RIswfig",
+      "data":[  
+         {  
+            "name":"first",
+            "value":"恭喜你预定成功",
+            "color":"#FF0000"
+         },
+         {  
+            "name":"hotelName",
+            "value":"OYO1008酒店",
+            "color":"#173177"
+         },
+         {  
+            "name":"roomName",
+            "value":"标准大床",
+            "color":"#173177"
+         },
+         {  
+            "name":"pay",
+            "value":"199元",
+            "color":"#173177"
+         },
+         {  
+            "name":"date",
+            "value":"2018年6月17日",
+            "color":"#173177"
+         },
+         {  
+            "name":"remark",
+            "value":"\n订单号：#BookingId#\n如有疑问，请咨询#Phone#",
+            "color":"#173177"
+         }
+      ]
+   }
+}
 }
 ```
 
