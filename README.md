@@ -69,6 +69,19 @@ Body:
 "message": { "toUser": "o7peR0ijJGmmDW719M89uRZfFhTg", "officialAccount": "OYORooms", "url":"oyorooms.com", "templateId":"1WuhB-snbuN-gGpxdQ3LvsxTaViA4UCURct4RIswfig", "data":[ { "name":"first", "value":"恭喜你预定成功", "color":"#FF0000" }, { "name":"hotelName", "value":"OYO1008酒店", "color":"#173177" }, { "name":"roomName", "value":"标准大床", "color":"#173177" }, { "name":"pay", "value":"199元", "color":"#173177" }, { "name":"date", "value":"2018年6月17日", "color":"#173177" }, { "name":"remark", "value":"\n订单号：#BookingId#\n如有疑问，请咨询#Phone#", "color":"#173177" } ]}
 }
 
+```json
+{
+	"count": 2, // 这次获取的粉丝数量   
+	"data": { // 粉丝列表
+		"openid": [
+			"ocYxcuAEy30bX0NXmGn4ypqx3tI0",
+			"ocYxcuBt0mRugKZ7tGAHPnUaOW7Y"
+		]
+	},
+	"next_openid": "ocYxcuBt0mRugKZ7tGAHPnUaOW7Y" // 拉取列表最后一个用户的openid 
+}
+```
+
 ### Show all records
 GET
 http://localhost:8080/message
