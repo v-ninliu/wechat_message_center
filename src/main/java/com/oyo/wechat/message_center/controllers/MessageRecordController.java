@@ -1,5 +1,6 @@
 package com.oyo.wechat.message_center.controllers;
 
+import com.oyo.wechat.message_center.exception.MessageRecordHandleException;
 import com.oyo.wechat.message_center.models.MessageRecord;
 import com.oyo.wechat.message_center.service.IMessageRecordService;
 import org.bson.types.ObjectId;
@@ -74,6 +75,14 @@ public class MessageRecordController {
   @RequestMapping(value = "", method = RequestMethod.POST)
   public MessageRecord createMessageRecord(@RequestBody String requestBody,
       HttpServletRequest request) {
-    return messageRecordService.createMessageRecord(requestBody, request);
+
+    MessageRecord record = null;
+    try {
+
+      record = messageRecordService.createMessageRecord(requestBody, request);
+    } catch (MessageRecordHandleException e) {
+      throw (e);
+    }
+    return record;
   }
 }
