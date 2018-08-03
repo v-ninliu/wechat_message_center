@@ -27,4 +27,13 @@ public class MessageManagementController {
       HttpServletRequest request) {
     return messageManagementService.composeMessage(requestBody, request);
   }
+
+  /**
+   * sendMessage
+   */
+  @RequestMapping(value = "/send", method = RequestMethod.POST)
+  public String sendMessage(@RequestBody String requestBody,
+      HttpServletRequest request) {
+    return messageManagementService.sendMessage(requestBody, request);
+  }
 }

@@ -1,8 +1,10 @@
 package com.oyo.wechat.message_center.service.impl;
 
+import com.oyo.wechat.message_center.client.SimpleHttpClient;
 import com.oyo.wechat.message_center.constants.GlobalConstants;
 import com.oyo.wechat.message_center.models.MessageRecord;
 import com.oyo.wechat.message_center.utils.StringUtils;
+import com.oyo.wechat.message_center.constants.RemoteAPIConstants;
 
 import com.oyo.wechat.message_center.service.IMessageManagementService;
 import com.oyo.wechat.message_center.service.IMessageRecordService;
@@ -13,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 @Service("MessageManagementService")
@@ -22,23 +26,62 @@ public class MessageManagementService implements IMessageManagementService {
   @Qualifier("MessageRecordService")
   private IMessageRecordService messageRecordService;
 
+  @Autowired
+  private SimpleHttpClient simpleHttpClient;
+
+  @Value("${platform-wechat-service.host}")
+  private String platformWechatServiceBaseUrl;
+
+  @Value("${platform-wechat-service.token}")
+  private String platformWechatServiceToken;
+
   @Override
   public String composeMessage(String requestBody,
       HttpServletRequest request) {
 
-    JSONObject jsonRequest = null;
-    MessageRecord messageRecord = null;
+    try {
+      JSONObject jsonRequest = new JSONObject(requestBody);
+      String name = jsonRequest.getString("name");
+      MessageRecord messageRecord = messageRecordService.getMessageRecordByName(name);
+      return composeMessageWithRealValues(jsonRequest, messageRecord);
+    } catch (Exception e) {
+      // TODO: add error message log
+      return( e.getMessage());
+    }
+  }
+
+  @Override
+  public String sendMessage(String requestBody,
+      HttpServletRequest request) {
+
+    try {
+      JSONObject jsonRequest = new JSONObject(requestBody);
+      String name = jsonRequest.getString("name");
+      MessageRecord messageRecord = messageRecordService.getMessageRecordByName(name);
+      String composedImage = composeMessageWithRealValues(jsonRequest, messageRecord);
+
+      String url = platformWechatServiceBaseUrl + RemoteAPIConstants.WECHAT_SEND_TEMPLATE_MESSAGE;
+      String accessToken = platformWechatServiceToken;
+      HttpHeaders headers = simpleHttpClient.getJsonHeaders();
+      headers.set("access_token", accessToken);
+      String result = simpleHttpClient.post(composedImage, url,headers).getBody();
+      return result;
+    } catch (Exception e) {
+      return( e.getMessage());
+    }
+  }
+
+  private String composeMessageWithRealValues(JSONObject jsonRequest,
+      MessageRecord messageRecord) {
+
     JSONObject jsonMessage = null;
     String composeMessage = null;
 
     try {
-      jsonRequest = new JSONObject(requestBody);
-
       String name = jsonRequest.getString("name");
       String parameters = jsonRequest.getString("parameters");
       String toUser = jsonRequest.getString("toUser");
 
-      messageRecord = messageRecordService.getMessageRecordByName(name);
       String message = messageRecord.getMessage();
 
       jsonMessage = new JSONObject(message);
