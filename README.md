@@ -1,6 +1,8 @@
-# wechat_message_center
+# WeChat Message Center
 
-This is a Web Service which provides APIs to manage WeChat messages saved in MongoDB.
+wechat_message_center is a Web Service which provides APIs to manage WeChat messages saved in MongoDB. 
+
+It also provides APIs to compose or to send message with saved message as template, and with run-time values.   
 
 In order to send correct message to users at run-time, we need to prepare, preview and save message in advance.
 
