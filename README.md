@@ -157,7 +157,8 @@ Body:
 
 ### compose a message
 
-Similiar to send message, but, the message is not send, the return value is the message to be sent.
+The message is composed with key-values, ready to be sent.
+
 POST
 http://localhost:8080/message/compose
 
