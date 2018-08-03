@@ -2,6 +2,7 @@ package com.oyo.wechat.message_center.service.impl;
 
 import com.oyo.wechat.message_center.client.SimpleHttpClient;
 import com.oyo.wechat.message_center.constants.GlobalConstants;
+import com.oyo.wechat.message_center.enums.MessageCategoryEnum;
 import com.oyo.wechat.message_center.models.MessageRecord;
 import com.oyo.wechat.message_center.utils.StringUtils;
 import com.oyo.wechat.message_center.constants.RemoteAPIConstants;
@@ -60,7 +61,29 @@ public class MessageManagementService implements IMessageManagementService {
       MessageRecord messageRecord = messageRecordService.getMessageRecordByName(name);
       String composedImage = composeMessageWithRealValues(jsonRequest, messageRecord);
 
-      String url = platformWechatServiceBaseUrl + RemoteAPIConstants.WECHAT_SEND_TEMPLATE_MESSAGE;
+      // find sending message URL by category
+      String category = messageRecord.getCategory();
+      MessageCategoryEnum categoryEnum = MessageCategoryEnum.valueOf(category);
+      String urlAPI = null;
+
+      switch (categoryEnum) {
+        case OFFICIAL_ACCOUNT_TEXT_MESSAGE:
+          urlAPI = RemoteAPIConstants.WECHAT_SEND_TEXT_MESSAGE;
+          break;
+
+        case OFFICIAL_ACCOUNT_PICTURE_MESSAGE:
+          urlAPI = RemoteAPIConstants.WECHAT_SEND_PICTURE_MESSAGE;
+          break;
+
+        case OFFICIAL_ACCOUNT_TEMPLATE_MESSAGE:
+          urlAPI = RemoteAPIConstants.WECHAT_SEND_TEMPLATE_MESSAGE;
+          break;
+
+        default:
+          return("Message category is unkown. Cannot send message");
+      }
+
+      String url = platformWechatServiceBaseUrl + urlAPI;
       String accessToken = platformWechatServiceToken;
       HttpHeaders headers = simpleHttpClient.getJsonHeaders();
       headers.set("access_token", accessToken);
