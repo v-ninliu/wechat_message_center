@@ -16,6 +16,8 @@ In saved message record, we use keywords, placeholders to reserve places for the
 
 这是一个Web service，它提供APIs来管理MongoDB中保存的微信消息。
 
+它还提供APIs用来发送消息，利用存好的消息并赋予真实的运行值。
+
 为了在运行时向用户发送正确的消息，我们需要提前准备，预览和保存消息。
 
 消息可以是酒店促销信息，预订确认消息，付款成功消息等，...
