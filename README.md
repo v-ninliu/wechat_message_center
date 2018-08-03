@@ -132,10 +132,11 @@ Body: [same as for create record]
 DELETE
 http://localhost:8080/message/5b6039a2e29edf2a0c22171e/record
 
-## Compose a message with run time value
+## How to send a message with run-time values
 
+### Send message
 POST
-http://localhost:8080/message/compose
+http://localhost:8080/message/send
 
 Body:
 
@@ -148,8 +149,18 @@ Body:
 ```
 
 #### Where:
-"name": name of the message record
+"name": name of the message record you wanty to use
 
 "toUser": user's openid 
 
 "parameters": list of key-value pairs. use "===" beteween key and value; use "&&&" to separate each pair.
+
+### compose a message
+
+Similiar to send message, but, the message is not send, the return value is the message to be sent.
+POST
+http://localhost:8080/message/compose
+
+Body:
+
+[same as for send message]
