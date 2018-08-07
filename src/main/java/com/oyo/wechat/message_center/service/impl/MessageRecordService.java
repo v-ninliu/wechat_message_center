@@ -42,8 +42,13 @@ public class MessageRecordService implements IMessageRecordService {
       messageRecord.setName(name);
       messageRecord.setCategory(category);
       messageRecord.setType(type);
-      messageRecord.setKeywords(jsonRequest.getString("keywords"));
-      messageRecord.setPlaceholders(jsonRequest.getString("placeholders"));
+
+      if( jsonRequest.has("keywords") ) {
+        messageRecord.setKeywords(jsonRequest.getString("keywords"));
+      }
+      if( jsonRequest.has("placeholders") ) {
+        messageRecord.setPlaceholders(jsonRequest.getString("placeholders"));
+      }
 
       String message = jsonRequest.getString("message");
       message.replace("\"", "\\\"");
