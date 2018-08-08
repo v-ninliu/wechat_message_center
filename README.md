@@ -12,6 +12,14 @@ An Application (Hotel Booking Web application for example) can retrieve these me
 
 In saved message record, we use keywords, placeholders to reserve places for the run-time values.
 
+Tools Used in this Tutorial
+
+1. Spring Boot
+2. Maven
+3. MongoDB
+4. Node.js (UI)
+5. React (UI)
+
 ## [translation]
 
 这是一个Web service，它提供APIs来管理MongoDB中保存的微信消息。
