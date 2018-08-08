@@ -41,7 +41,7 @@ class App extends Component {
               <tbody>
                 {this.state.messages.map(c =>
                   <tr>
-                    <td><Link to={`/show/${c.id}`}>{c.name}</Link></td>
+                    <td><Link to={`/show/${c._id}`}>{c.name}</Link></td>
                     <td>{c.type}</td>
                   </tr>
                 )}
