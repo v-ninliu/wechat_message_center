@@ -188,19 +188,26 @@ https://nodejs.org/en/download/
 Following steps are required deponding on your environement.
 
 2. Install React
+
 cd [your project root]
+
 npm install -g create-react-app
 
 3. Install modules
+
 cd ./frontend
+
 npm install --save react-router-dom
+
 npm install --save-dev bootstrap
+
 npm install --save axios
 
 ### Build
 each time you modify a file for front-end, you need to stop server, and run:
 
 cd ./frontend
+
 npm run build
 
 Then, start server.
