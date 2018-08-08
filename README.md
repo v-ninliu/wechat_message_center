@@ -12,7 +12,7 @@ An Application (Hotel Booking Web application for example) can retrieve these me
 
 In saved message record, we use keywords, placeholders to reserve places for the run-time values.
 
-Tools Used in this Tutorial
+Tools Used in this Project
 
 1. Spring Boot
 2. Maven
@@ -177,3 +177,35 @@ http://localhost:8080/message/compose
 Body:
 
 [same as for send message]
+
+## Front-end  setup
+
+If you will work on front-end (UI), you need to do:
+
+1. Download and install node.js
+https://nodejs.org/en/download/
+
+Following steps are required deponding on your environement.
+
+2. Install React
+cd [your project root]
+npm install -g create-react-app
+
+3. Install modules
+cd ./frontend
+npm install --save react-router-dom
+npm install --save-dev bootstrap
+npm install --save axios
+
+### Build
+each time you modify a file for front-end, you need to stop server, and run:
+
+cd ./frontend
+npm run build
+
+Then, start server.
+
+### make Tests for UI
+
+localhost:8080
+
