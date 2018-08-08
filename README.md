@@ -12,13 +12,6 @@ An Application (Hotel Booking Web application for example) can retrieve these me
 
 In saved message record, we use keywords, placeholders to reserve places for the run-time values.
 
-Tools Used in this Project
-
-1. Spring Boot
-2. Maven
-3. MongoDB
-4. Node.js (UI)
-5. React (UI)
 
 ## [translation]
 
@@ -33,6 +26,14 @@ Tools Used in this Project
 应用程序（例如酒店预订官网应用程序）可以在运行时取出这些消息，赋予值（例如酒店名称，价格...），并向用户发送消息。
 
 在保存的消息记录中，我们使用关键字，占位符来保留运行时值的位置。
+
+### Tools Used in this Project
+
+1. Spring Boot
+2. Maven
+3. MongoDB
+4. Node.js (UI)
+5. React (UI)
 
 ## Project setup
 Clone the project
