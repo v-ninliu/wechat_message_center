@@ -42,14 +42,14 @@ class Edit extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              EDIT message
+              EDIT MESSAGE
             </h3>
           </div>
           <div class="panel-body">
             <h4><Link to="/"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>Message List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">name:</label>
                 <input type="text" class="form-control" name="name" value={this.state.message.name} onChange={this.onChange} />
               </div>
               <div class="form-group">
@@ -74,7 +74,7 @@ class Edit extends Component {
                   {this.state.message.message}
               </textarea>
               </div>
-              <button type="submit" class="btn btn-default">Update</button>
+              <button type="submit" class="btn btn-success">Update</button>
             </form>
           </div>
         </div>

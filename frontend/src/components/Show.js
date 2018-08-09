@@ -33,7 +33,7 @@ class Show extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              Message Details
+              MESSAGE DETAILS
             </h3>
           </div>
           <div class="panel-body">
@@ -52,8 +52,10 @@ class Show extends Component {
               <dt>message:</dt>
               <dd>{this.state.message.message}</dd>
             </dl>
-            <Link to={`/edit/${this.state.message._id}`} class="btn btn-success">Edit</Link>&nbsp;
+            <Link to={`/edit/${this.state.message._id}`} class="btn btn-success">Edit</Link>&nbsp;&nbsp;
+             <Link to={`/send/${this.state.message.name}`} class="btn btn-info">Send</Link>&nbsp;&nbsp;
             <button onClick={this.delete.bind(this, this.state.message._id)} class="btn btn-danger">Delete</button>
+
           </div>
         </div>
       </div>
