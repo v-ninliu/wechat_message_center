@@ -72,6 +72,9 @@ public class MessageRecordService implements IMessageRecordService {
 
   @Override
   public MessageRecord modifyMessageRecordsById(ObjectId id, MessageRecord record) {
+    if( repository.findByName(record.getName()) != null ) {
+      throw (new MessageRecordHandleException("The record with name = " + record.getName() + " exists already. name must be unique"));
+    }
     record.set_id(id);
     repository.save(record);
     return record;

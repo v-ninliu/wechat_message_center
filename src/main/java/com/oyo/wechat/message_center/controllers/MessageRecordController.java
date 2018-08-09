@@ -58,7 +58,13 @@ public class MessageRecordController {
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
   public MessageRecord modifyMessageRecordsById(@PathVariable("id") ObjectId id,
       @Valid @RequestBody MessageRecord record) {
-    return messageRecordService.modifyMessageRecordsById(id, record);
+
+    try {
+      record = messageRecordService.modifyMessageRecordsById(id, record);
+    } catch (MessageRecordHandleException e) {
+      throw (e);
+    }
+    return record;
   }
 
   /**

@@ -72,7 +72,7 @@ class Create extends Component {
                 add your message here
                 </textarea>
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-success">Submit</button>
             </form>
           </div>
         </div>
