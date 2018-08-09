@@ -12,7 +12,7 @@ class Send extends Component {
   }
 
   componentDidMount() {
-    var init = { "name" : this.props.match.params.id, "toUser": "", "parameters": "HEADER_1===感谢您预订酒店&&&HOTEL_NAME===Best Oriental Hotel&&&ROOM_NAME===Luxury Room&&&HOTEL_PRICE===212&&&BOOKING_ID===5578999&&&CUSTOMER_SERVICE_PHONE===13717636289"};
+    var init = { "name" : this.props.match.params.id, "toUser": "", "parameters": "HEADER_1===感谢您预订酒店&&&HOTEL_NAME===Best Oriental Hotel&&&ROOM_NAME===Luxury Room&&&HOTEL_PRICE===212&&&BOOKING_ID===5578999&&&CUSTOMER_SERVICE_PHONE===13717636288"};
     this.setState({ message: init });
   }
 
