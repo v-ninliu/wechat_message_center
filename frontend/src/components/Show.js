@@ -45,6 +45,8 @@ class Show extends Component {
               <dd>{this.state.message.type}</dd>
               <dt>category:</dt>
               <dd>{this.state.message.category}</dd>
+              <dt>last modified date:</dt>
+              <dd>{this.state.message.createdDate}</dd>
               <dt>keywords:</dt>
               <dd>{this.state.message.keywords}</dd>
               <dt>placeholders:</dt>
